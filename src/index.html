@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+	<title>Stencil Component Tester</title>
+	<script src="/build/app.js"></script>
+	<style>
+		.container {
+			display: flex;
+		}
+
+		.component-container {
+			border: 1px solid #000;
+			padding: 10px;
+			width: 150px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<test-component></test-component>
+	</div>
+
+	<button onclick="cloneComponent()">Clone component</button>
+	<button onclick="copyHtml()">Copy html</button>
+
+	<div class="container">
+		<div id="cloned-components" class="component-container"></div>
+		<div id="copied-components" class="component-container"></div>
+	</div>
+
+	<script>
+		function cloneComponent() {
+			document.getElementById('cloned-components').innerHTML = '';
+			document.getElementById('cloned-components').appendChild(document.querySelector('test-component').cloneNode());
+		}
+
+		function copyHtml() {
+			document.getElementById('copied-components').innerHTML = document.querySelector('test-component').parentElement.innerHTML;
+		}
+	</script>
+</body>
+
+</html>
